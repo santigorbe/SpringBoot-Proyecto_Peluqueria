@@ -29,7 +29,7 @@ public class Category {
     private String description;
     @OneToMany(
             mappedBy = "category",
-            cascade = CascadeType.REMOVE //Cuando borro una categoria, que se borren todos los productos que pertenecen a la misma
+            cascade = CascadeType.ALL //Cuando borro una categoria, que se borren todos los productos que pertenecen a la misma
     )
     private List<Product> products;
 }
