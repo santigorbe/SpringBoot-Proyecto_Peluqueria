@@ -1,6 +1,5 @@
 package org.example.peluqueria.handler;
 
-import com.alibou.ecommerce.exception.ProductPurchaseException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,12 +14,12 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ProductPurchaseException.class)
+    /*@ExceptionHandler(ProductPurchaseException.class)
     public ResponseEntity<String> handle(ProductPurchaseException exp) {
         return ResponseEntity
                 .status(BAD_REQUEST)
                 .body(exp.getMessage());
-    }
+    }*/
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handle(EntityNotFoundException exp) {

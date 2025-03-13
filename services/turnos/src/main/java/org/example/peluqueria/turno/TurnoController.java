@@ -1,27 +1,31 @@
-package org.example.peluqueria.product;
+package org.example.peluqueria.turno;
 
-import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1/turnos")
 @RequiredArgsConstructor
-public class ProductController {
+public class TurnoController {
+    private final TurnoService service;
 
-    private final ProductService service;
-
-    @PostMapping
-    public ResponseEntity<Integer> createProduct(
-            @RequestBody @Valid ProductRequest request
-    ) {
-        return ResponseEntity.ok(service.createProduct(request));
+    @GetMapping
+    public List<Turno> findAll() {
+        return service.findAll();
     }
 
-    @PostMapping("/purchase")
+    @GetMapping
+    public Optional<Turno> findById(@RequestParam Long id) {
+        return service.findById(id);
+    }
+
+}
+
+    /*@PostMapping("/purchase")
     public ResponseEntity<List<ProductPurchaseResponse>> purchaseProducts(
             @RequestBody List<ProductPurchaseRequest> request
     ) {
@@ -39,4 +43,4 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
-}
+}*/

@@ -1,34 +1,36 @@
-package org.example.peluqueria.product;
+package org.example.peluqueria.turno;
 
-import com.alibou.ecommerce.exception.ProductPurchaseException;
-import com.alibou.ecommerce.product.ProductMapper;
-import com.alibou.ecommerce.product.ProductPurchaseResponse;
-import com.alibou.ecommerce.product.ProductRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
+public class TurnoService {
 
-    private final ProductRepository repository;
-    private final ProductMapper mapper;
+    private final TurnoRepository repository;
+    //private final TurnoMapper mapper;
 
-    public Integer createProduct(
-            ProductRequest request
-    ) {
-        var product = mapper.toProduct(request);
-        return repository.save(product).getId();
+
+//    public Integer createTurno(TurnoRequest request) {
+//        var turno = mapper.toTurno(request);
+//
+//
+//        return repository.save(turno).getId();
+//    }
+
+    public List<Turno> findAll() {
+        return repository.findAll();
     }
 
-    public ProductResponse findById(Integer id) {
+    public Optional<Turno> findById(Long id) {
+        return repository.findById(id);
+    }
+
+/*
+    public TurnoResponse findById(Integer id) {
         return repository.findById(id)
                 .map(mapper::toProductResponse)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with ID:: " + id));
@@ -73,6 +75,5 @@ public class ProductService {
             purchasedProducts.add(mapper.toproductPurchaseResponse(product, productRequest.quantity()));
         }
         return purchasedProducts;
-    }
-
+    }*/
 }
