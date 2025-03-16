@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
@@ -16,10 +17,15 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductPurchaseException.class)
-    public ResponseEntity<String> handle(ProductPurchaseException exp) {
+    public ResponseEntity<ErrorResponse> handle(ProductPurchaseException exp) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("message", exp.getMessage());
+        errors.put("statusCode", String.valueOf(BAD_REQUEST.value()));
+        ErrorResponse errorResponse = new ErrorResponse(errors);
+
         return ResponseEntity
                 .status(BAD_REQUEST)
-                .body(exp.getMessage());
+                .body(errorResponse);
     }
 
     @ExceptionHandler(EntityNotFoundException.class)

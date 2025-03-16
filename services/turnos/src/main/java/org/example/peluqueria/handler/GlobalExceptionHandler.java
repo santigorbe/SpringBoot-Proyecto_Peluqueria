@@ -1,6 +1,7 @@
 package org.example.peluqueria.handler;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.example.peluqueria.exception.TurnoTomadoException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,6 +14,13 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(TurnoTomadoException.class)
+    public ResponseEntity<String> handle(TurnoTomadoException exp) {
+        return ResponseEntity
+                .status(BAD_REQUEST)
+                .body(exp.getMessage());
+    }
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handle(EntityNotFoundException exp) {
