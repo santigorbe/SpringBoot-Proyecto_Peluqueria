@@ -1,4 +1,4 @@
-package org.example.peluqueria.turno;
+package org.example.peluqueria.horario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

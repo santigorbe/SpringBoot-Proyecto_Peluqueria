@@ -14,13 +14,6 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    /*@ExceptionHandler(ProductPurchaseException.class)
-    public ResponseEntity<String> handle(ProductPurchaseException exp) {
-        return ResponseEntity
-                .status(BAD_REQUEST)
-                .body(exp.getMessage());
-    }*/
-
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<String> handle(EntityNotFoundException exp) {
         return ResponseEntity

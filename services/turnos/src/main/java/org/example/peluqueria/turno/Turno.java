@@ -1,5 +1,6 @@
 package org.example.peluqueria.turno;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.peluqueria.peluquero.Peluquero;
@@ -10,6 +11,7 @@ import org.example.peluqueria.usuario.Usuario;
 @Builder
 @Data
 @Entity
+@JsonIgnoreProperties({"peluquero", "usuario"}) // Ignorar propiedades en la serialización
 public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

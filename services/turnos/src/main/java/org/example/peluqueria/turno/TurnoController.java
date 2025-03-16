@@ -14,33 +14,17 @@ public class TurnoController {
     private final TurnoService service;
 
     @GetMapping
-    public List<Turno> findAll() {
+    public List<TurnoResponse> findAll() {
         return service.findAll();
     }
 
-    @GetMapping
-    public Optional<Turno> findById(@RequestParam Long id) {
+    @GetMapping("/{id_turno}")
+    public TurnoResponse findById(@RequestParam("id_turno") Long id) {
         return service.findById(id);
     }
 
+    @PostMapping
+    public Long createTurno(@RequestBody TurnoRequest request) {
+        return service.createTurno(request);
+    }
 }
-
-    /*@PostMapping("/purchase")
-    public ResponseEntity<List<ProductPurchaseResponse>> purchaseProducts(
-            @RequestBody List<ProductPurchaseRequest> request
-    ) {
-        return ResponseEntity.ok(service.purchaseProducts(request));
-    }
-
-    @GetMapping("/{product-id}")
-    public ResponseEntity<ProductResponse> findById(
-            @PathVariable("product-id") Integer productId
-    ) {
-        return ResponseEntity.ok(service.findById(productId));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<ProductResponse>> findAll() {
-        return ResponseEntity.ok(service.findAll());
-    }
-}*/

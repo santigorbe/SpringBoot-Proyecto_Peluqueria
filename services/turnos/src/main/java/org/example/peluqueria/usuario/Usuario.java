@@ -19,5 +19,5 @@ public class Usuario {
     private String apellido;
     private String email;
     private String telefono;
-    private int edad;
+    private Integer edad;
 }

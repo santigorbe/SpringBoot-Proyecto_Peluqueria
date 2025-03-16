@@ -6,9 +6,9 @@ import org.example.peluqueria.usuario.Usuario;
 import java.math.BigDecimal;
 
 public record TurnoRequest (
-        Integer id,
+        Long id,
         String diaHorario,
-        Usuario usuario,
-        Peluquero peluquero
+        Long usuarioId,
+        Long peluqueroId
 ){
 }
