@@ -1,9 +1,5 @@
 ## _API _ PELUQUERIA_
 
-[![N|Solid]](https://nodesource.com/products/nsolid)
-
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 Esta es una API para una peluqueria hecha a modo de practica,
 la misma se conforma de Usuarios, Turnos y Peluqueros.
 Permite crear turnos asignando un usuario, un peluquero y una fecha, 
